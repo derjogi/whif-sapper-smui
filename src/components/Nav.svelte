@@ -1,17 +1,20 @@
 <script>
 	export let segment;
-	let pages = ["about", "create", "browse"];
+	let pages = ["about", "create", "topics"];
+	let prefetch = ["topics"];
+	// adding pages to prefetch makes Sapper prefetch the page data
+	// when we hover over the link or tap it on a touchscreen
+	let isPrefetched = function(page) {
+		return prefetch.includes(page) ? ' rel=prefetch':'';
+	}
 </script>
 
 <nav>
 	<ul>
 		<li><a class:selected='{segment === undefined}' href='.'>home</a></li>
 		{#each pages as page}
-			<li><a class:selected='{segment === page}' href='{page}'>{page}</a></li>
+			<li><a {isPrefetched} class:selected='{segment === page}' href='{page}'>{page}</a></li>
 		{/each}
-		<!-- for the blog link, we're using rel=prefetch so that Sapper prefetches
-		     the blog data when we hover over the link or tap it on a touchscreen -->
-		<li><a rel=prefetch class:selected='{segment === "blog"}' href='blog'>blog</a></li>
 	</ul>
 </nav>
 

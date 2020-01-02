@@ -1,18 +1,18 @@
 <script context="module">
-	import {firestore} from '../firebase';
-
+	import {firestore} from './../firebase';
+	let topics = [];
 	export async function preload(page, session) {
 		console.log('Waiting for firestore connection in index.svelte...');
 		let db = await firestore();
-		let promisedTopics = db.collection("topics").get();
-		console.log("Topics: ", promisedTopics.docs);
+		let promisedTopics = await db.collection("topics").get();
+		// console.log("Topics: ", promisedTopics);
+		// console.log("Topics: ", promisedTopics.docs);
 		return { topics: promisedTopics.docs }
 	}
 </script>
 
 <script>
 	import Button, {Label, Icon} from '@smui/button';
-	let topics = [];
 </script>
 
 <svelte:head>
