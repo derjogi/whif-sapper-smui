@@ -1,15 +1,11 @@
 <script context="module">
-	export async function preload({ params, query }) {
-		// the `slug` parameter is available because
-		// this file is called [id].svelte
-		const res = await this.fetch("topics", `topics/${params.id}.json`);
-		const data = await res.json();
+	import {fetchDoc} from "../../firebase";
 
-		if (res.status === 200) {
-			return { topic: data };
-		} else {
-			this.error(res.status, data.message);
-		}
+	export async function preload({ params, query }) {
+		// the `id` parameter is available because this file is called [id].svelte
+		let doc = await fetchDoc("topics", params.id);
+		// We expect only one document to be returned from fetchDoc!
+		return { topic : doc[0]}
 	}
 </script>
 
@@ -60,5 +56,5 @@
 <h1>{topic.title}</h1>
 
 <div class='content'>
-	{@html topic.html}
+	{topic.content}
 </div>

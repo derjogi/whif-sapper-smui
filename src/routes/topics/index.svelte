@@ -4,18 +4,16 @@
 
 <script context="module">
 	import {fetch} from '../../firebase';
-	export let topics;
 
 	export async function preload(page, session) {
-		return await fetch("topics");
+		let topics = await fetch("topics");
+		return { topics };
 	}
 </script>
 
 <script>
 	import TopicCard from "../../components/TopicCard.svelte";
-
-	let title = '';
-	let text = '';
+	export let topics;
 </script>
 
 <h1>What happens if ...</h1>

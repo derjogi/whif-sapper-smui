@@ -20,12 +20,30 @@ async function firestore() {
 export async function fetch(collection = "topics") {
     let db = await firestore();
     let entries = [];
-    await db.collection(collection).get().then(dbEntries => {
-        dbEntries.forEach((entry) => {
-            let data = entry.data();
-            entries.push(data);
-        });
-    });
+    console.log("Fetching entries...");
+    await db.collection(collection)
+        .get()
+        .then(dbEntries => {
+            dbEntries.forEach(entry => {
+                let data = entry.data();
+                // we want to have the id as part of the data instead of on the document
+                // because we're throwing away the document reference.
+                data["id"] = entry.id;
+                entries.push(data);
+            });
+        })
+        .catch(e => console.log(e));
 
+    return entries;
+}
+
+export async function fetchDoc(collection = "topics", doc) {
+    let db = await firestore();
+    let entries = [];
+    await db.collection(collection)
+        .doc(doc)
+        .get()
+        .then(entry => entries.push(entry.data()))
+        .catch(e => console.log(e));
     return entries;
 }
