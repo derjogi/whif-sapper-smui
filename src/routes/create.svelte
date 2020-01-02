@@ -3,6 +3,7 @@
 </svelte:head>
 
 <script>
+	import {db} from '../firebase'	// Todo: write to DB
 	import Textfield from '@smui/textfield';
 	import HelperText from '@smui/textfield/helper-text';
 

@@ -97,7 +97,7 @@ module.exports = {
 						loader: 'svelte-loader',
 						options: {
 							css: false,
-							generate: 'ssr',
+							generate: 'ssr',	//['dom', 'false']
 							dev
 						}
 					}

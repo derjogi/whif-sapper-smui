@@ -1,6 +1,6 @@
 <script>
 	export let segment;
-	let pages = ["about", "create"];
+	let pages = ["about", "create", "browse"];
 </script>
 
 <nav>
