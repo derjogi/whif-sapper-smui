@@ -4,13 +4,15 @@
     import Card, {Content, PrimaryAction, Media, MediaContent, Actions, ActionButtons, ActionIcons} from '@smui/card'
 </script>
 
-<style>
+<style lang="scss">
     .topicClass {
         margin: 20px;
+        @include mdc-card-outline(blue, 20px);  /* does not work */
     }
 </style>
 
-<Card class="topicClass">
+<div class="topicClass">
+<Card>
     <Content>
         <h1>{topic.title}</h1>
         {topic.content}
@@ -19,3 +21,4 @@
         <Button rel='prefetch' href='topics/{topic.id}'> {topic.title} </Button>
     </Actions>
 </Card>
+</div>

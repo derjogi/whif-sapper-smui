@@ -47,3 +47,10 @@ export async function fetchDoc(collection = "topics", doc) {
         .catch(e => console.log(e));
     return entries;
 }
+
+export async function insert(collection, data) {
+    let db = await firestore();
+    db.collection(collection).add(data)
+        .then(docRef => console.log("Inserted new document: ", docRef.id))
+        .catch(e => console.log("Error inserting new document: ", e))
+}
