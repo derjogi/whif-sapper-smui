@@ -14,25 +14,17 @@
 </script>
 
 <svelte:head>
-	<title>Sapper SMUI project template</title>
+	<title>WHIF Prototype</title>
 </svelte:head>
 
-<h1>Great success!</h1>
-Topics from *katching*:
+<h1>You're wondering WHIF or not?</h1>
+Just some of our topics...<br>
 {#each topics as topic}
 	{topic.title}<br>
 	{:else}Such empty :-( Why don't you go and <a href="create">create</a> a new topic?
 {/each}
-<figure>
-	<img alt='Borat' src='great-success.png'>
-	<figcaption>HIGH FIVE!</figcaption>
-</figure>
 
-<p><strong>Try editing this file (src/routes/index.svelte) to test live reloading.</strong></p>
-
-
-<Button>Your first SMUI Button</Button>
-
+<!-- svelte-ignore a11y-unused-css-selector -->
 <style>
 	h1, figure, p {
 		text-align: center;

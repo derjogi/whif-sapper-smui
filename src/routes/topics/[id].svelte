@@ -5,13 +5,29 @@
 		// the `id` parameter is available because this file is called [id].svelte
 		let doc = await fetchDoc("topics", params.id);
 		// We expect only one document to be returned from fetchDoc!
-		return { topic : doc[0]}
+		return { topic : doc[0], id : params.id}
 	}
 </script>
 
 <script>
+	import Summary from "../../components/Summary.svelte";
 	export let topic;
+	export let id;
 </script>
+
+
+<svelte:head>
+	<title>{topic.title}</title>
+</svelte:head>
+
+<h1>{topic.title}</h1>
+
+<div class='content'>
+	{topic.content}
+</div>
+
+<Summary topic={topic} id={id}/>
+
 
 <style>
 	/*
@@ -48,13 +64,3 @@
 		margin: 0 0 0.5em 0;
 	}
 </style>
-
-<svelte:head>
-	<title>{topic.title}</title>
-</svelte:head>
-
-<h1>{topic.title}</h1>
-
-<div class='content'>
-	{topic.content}
-</div>

@@ -54,3 +54,12 @@ export async function insert(collection, data) {
         .then(docRef => console.log("Inserted new document: ", docRef.id))
         .catch(e => console.log("Error inserting new document: ", e))
 }
+
+export async function insertOpinion(topic, opinion) {
+    let db = await firestore();
+    console.log("some logging.");
+    console.log('Inserting new opinion into {$topic} : ' + topic);
+    db.collection('topics').doc(topic).collection('opinions').add(opinion)
+        .then(docRef => console.log("Inserted new opinion: ", docRef.id))
+        .catch(e => console.log("Error inserting new opinion: ", e))
+}

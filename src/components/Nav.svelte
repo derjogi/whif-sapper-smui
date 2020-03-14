@@ -1,6 +1,6 @@
 <script>
 	export let segment;
-	let pages = ["about", "create", "topics"];
+	let pages = ["about", "create", "topics", "sense"];
 	let prefetch = ["topics"];
 	// adding pages to prefetch makes Sapper prefetch the page data
 	// when we hover over the link or tap it on a touchscreen

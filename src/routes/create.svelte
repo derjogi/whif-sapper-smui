@@ -3,8 +3,10 @@
 </svelte:head>
 
 <script>
+	import * as sapper from '@sapper/app';
 	import {insert} from '../firebase'
 	import Textfield from '@smui/textfield';
+	import Button from '@smui/button';
 	import HelperText from '@smui/textfield/helper-text';
 
 	let title = '';
@@ -16,6 +18,7 @@
 		title = '';
 		text = '';
 		submitted = true;
+		sapper.goto(`sense`);
 	}
 
 	function validate(event) {
@@ -50,9 +53,10 @@
 			   label="And a bit more context"
 			   bind:value={text}
 	/>
-	<button disabled={!text} type=submit>
+	<br>
+	<Button disabled={!text||!title} type=submit>
 		Submit
-	</button>
+	</Button>
 </form>
 
 {#if submitted}
