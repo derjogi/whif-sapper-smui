@@ -35,7 +35,7 @@
     "sass-loader": "^8.0.0",
     "scss-loader": "0.0.1",
     "style-loader": "^1.0.1",
-    "svelte": "^3.16.4",
+    "svelte": "^3.49.0",
     "svelte-loader": "^2.9.0",
     "utf-8-validate": "^5.0.2",
     "webpack": "^4.41.3",
